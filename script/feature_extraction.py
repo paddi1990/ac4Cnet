@@ -320,8 +320,7 @@ def extract_5mer_features(read_id, chr, start, reference_sequence, base_quality_
 	"""
 
 	kmer_fillter = convert_base_name(args.motif)
-    
-
+	site_list=""
 	clip=10 
 	count=0
 	scaling="median_mad"
@@ -382,12 +381,12 @@ def extract_5mer_features(read_id, chr, start, reference_sequence, base_quality_
                                                                                      "|".join([str(x) for x in kmer_raw_signal[3]]),
                                                                                      "|".join([str(x) for x in kmer_raw_signal[4]])
                                                                                     )
-
+			site_list+=line
 			count+=1
 	except Exception as e:
 		#print(traceback.print_exc())
 		return 0
-	return line
+	return site_list
 
 def main():
     
